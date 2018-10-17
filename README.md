@@ -1,9 +1,11 @@
-# Wobook Reader for iOS
+<h1 align="center"> Wobook Reader for iOS </h1> <br>
+<p align="center">
+    <img alt="Wobook Reader for iOS" title="Wobook Reader for iOS" src="/assets/logo.png" height="250">
+</p>
 
-An incredible reading experience
-
-![CocoaPods version](https://img.shields.io/cocoapods/v/WobookReader.svg)
-![CocoaPods downloads](https://img.shields.io/cocoapods/dt/WobookReader.svg)
+<p align="center">
+    An incredible reading experience
+</p>
 
 > Public releases of the iOS framework for CocoaPods
 
@@ -22,6 +24,9 @@ An incredible reading experience
 [![AlamofireImage](https://img.shields.io/cocoapods/v/AlamofireImage.svg?label=AlamofireImage&colorB=c64c2c)](https://github.com/Alamofire/AlamofireImage)
 
 ## Installation
+
+![CocoaPods version](https://img.shields.io/cocoapods/v/WobookReader.svg)
+![CocoaPods downloads](https://img.shields.io/cocoapods/dt/WobookReader.svg)
 
 ### CocoaPods
 
