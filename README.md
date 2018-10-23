@@ -75,7 +75,7 @@ wobookReader.present(from: self)
 
 ### Customization
 
-Main color for page number indicator:
+Main color for progress indicator if no `progressColors` are specified:
 
 ```swift
 var mainColor: UIColor?
