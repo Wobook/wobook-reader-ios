@@ -1,6 +1,6 @@
 Pod::Spec.new do |spec|  
     spec.name                       = 'WobookReader'
-    spec.version                    = '1.2.1'
+    spec.version                    = '2.0.1'
     spec.summary                    = 'An incredible reading experience'
     spec.license                    = { :type => 'Commercial', :text => <<-LICENSE
                                         © 2018 Wobook. All rights reserved.
@@ -8,15 +8,12 @@ Pod::Spec.new do |spec|
                                        }
     spec.author                     = { 'Loïc Lavergne' => 'llavergne@holdingvm.com' }
 
-    spec.homepage                   = 'https://www.wobook.com'
+    spec.homepage                   = 'https://www.wobook.com/'
 
-    spec.source                     = { :http => 'https://github.com/Wobook/wobook-reader-ios/releases/download/v1.2.1-ios/WobookReader-1.2.1-ios.zip' }
+    spec.source                     = { :http => 'https://github.com/Wobook/wobook-reader-ios/releases/download/v2.0.1-ios/WobookReader-2.0.1-ios.zip' }
 
     spec.swift_version              = '4.2'
     spec.platform                   = :ios
     spec.ios.deployment_target      = '11.0'
     spec.ios.vendored_frameworks    = 'WobookReader.framework'
-
-    spec.dependency 'Alamofire', '~> 4.7'
-    spec.dependency 'AlamofireImage', '~> 3.3'
 end
