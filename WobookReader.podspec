@@ -10,7 +10,7 @@ Pod::Spec.new do |spec|
 
     spec.homepage                   = 'https://www.wobook.com/'
 
-    spec.source                     = { :http => 'https://github.com/Wobook/wobook-reader-ios/releases/download/v2.1.1-ios/WobookReader-2.2.1-ios.zip' }
+    spec.source                     = { :http => 'https://github.com/Wobook/wobook-reader-ios/releases/download/v2.2.1-ios/WobookReader-2.2.1-ios.zip' }
 
     spec.swift_version              = '4.2'
     spec.platform                   = :ios
