@@ -40,6 +40,43 @@ pod 'WobookReader'
 import WobookReader
 ```
 
+
+### ATS
+
+App Transport Security (ATS) is a technology that requires an app to either support best practice HTTPS security or statically declare its security limitations via a property in its `Info.plist`. ATS is officially documented in the *NSAppTransportSecurity* section of the [Information Property List Key Reference](https://developer.apple.com/library/content/documentation/General/Reference/InfoPlistKeyReference/Articles/CocoaKeys.html#//apple_ref/doc/uid/TP40009251-SW33).
+
+You must add **wobook.com** as an exception to allow the HTTP calls of the reader.
+
+```xml
+  <key>NSAppTransportSecurity</key>
+  <dict>
+    <key>NSAllowsArbitraryLoads</key>
+    <false/>
+    <key>NSExceptionDomains</key>
+    <dict>
+      <key>wobook.com</key>
+      <dict>
+        <key>NSExceptionAllowsInsecureHTTPLoads</key>
+        <true/>
+        <key>NSExceptionMinimumTLSVersion</key>
+        <string>TLSv1.2</string>
+        <key>NSExceptionRequiresForwardSecrecy</key>
+        <true/>
+        <key>NSIncludesSubdomains</key>
+        <true/>
+        <key>NSRequiresCertificateTransparency</key>
+        <false/>
+        <key>NSThirdPartyExceptionAllowsInsecureHTTPLoads</key>
+        <false/>
+        <key>NSThirdPartyExceptionMinimumTLSVersion</key>
+        <string>TLSv1.2</string>
+        <key>NSThirdPartyExceptionRequiresForwardSecrecy</key>
+        <true/>
+      </dict>
+    </dict>
+  </dict>
+```
+
 ### Initialializing the reader
 
 ```swift
