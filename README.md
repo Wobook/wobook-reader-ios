@@ -110,6 +110,21 @@ wobookReader.present(from: self)
 
 > Wobook Reader will always present itself from the main thread.
 
+### Dismissal completion block
+
+Block which is called when the modal controller has been dismissed:
+
+```swift
+var onDismiss: (() -> Void)?
+```
+
+*Example:*
+```swift
+wobookReader.onDismiss = {
+  print("The reader has been dismissed")
+}
+```
+
 ### Customization
 
 Main color for progress indicator if no `progressColors` are specified:
@@ -138,7 +153,6 @@ wobookReader.progressColors = [UIColor.red.cgColor,
 
   > The main color will be used if this parameter is nil, an empty array or contains less than 2 colors.
 
-
 Placeholder used while loading thumbnails:
 
 ```swift
@@ -162,6 +176,9 @@ wobookReader.progressColors = [UIColor.red.cgColor,
                                UIColor.orange.cgColor,
                                UIColor.yellow.cgColor]
 wobookReader.placeholder = UIImage(named: "Placeholder")
+wobookReader.onDismiss = {
+  print("The reader has been dismissed")
+}
 
 wobookReader.present(from: self)
 ```
