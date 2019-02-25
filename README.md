@@ -1,6 +1,6 @@
 <h1 align="center"> Wobook Reader for iOS </h1> <br>
 <p align="center">
-    <img alt="Wobook Reader for iOS" title="Wobook Reader for iOS" src="/assets/logo.png" height="250">
+    <img alt="Wobook Reader for iOS" title="Wobook Reader for iOS" src="/assets/logo.png" height="500">
 </p>
 
 <p align="center">
@@ -24,7 +24,9 @@
 ## Installation
 
 ![CocoaPods version](https://img.shields.io/cocoapods/v/WobookReader.svg)
-![CocoaPods downloads](https://img.shields.io/cocoapods/dt/WobookReader.svg)
+![Latest release date](https://img.shields.io/github/release-date/Wobook/wobook-reader-ios.svg)
+![CocoaPods platforms](https://img.shields.io/cocoapods/p/WobookReader.svg)
+![Total downloads](https://img.shields.io/github/downloads/Wobook/wobook-reader-ios/total.svg)
 
 ### CocoaPods
 
