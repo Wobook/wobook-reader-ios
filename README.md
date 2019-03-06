@@ -1,19 +1,20 @@
-<h1 align="center"> Wobook Reader for iOS </h1> <br>
+<h1 align="center"> ReaderKit for iOS </h1> <br>
 <p align="center">
-    <img alt="Wobook Reader for iOS" title="Wobook Reader for iOS" src="/assets/logo.png" height="500">
+    <img alt="ReaderKit for iOS" title="ReaderKit for iOS" src="/assets/logo.png" height="350">
 </p>
 
 <p align="center">
     An incredible reading experience
-</p>
+</p> <br/>
 
-> Public releases of the iOS framework for CocoaPods
+  > Public releases of the iOS framework for CocoaPods
 
 ## Table of Contents
 
 - [Requirements](#requirements)
 - [Installation](#installation)
 - [Usage](#usage)
+- [Customize](#customize)
 
 ## Requirements
 
@@ -23,27 +24,20 @@
 
 ## Installation
 
-![CocoaPods version](https://img.shields.io/cocoapods/v/WobookReader.svg)
+![CocoaPods version](https://img.shields.io/cocoapods/v/ReaderKit.svg)
 ![Latest release date](https://img.shields.io/github/release-date/Wobook/wobook-reader-ios.svg)
-![CocoaPods platforms](https://img.shields.io/cocoapods/p/WobookReader.svg)
+![CocoaPods platforms](https://img.shields.io/cocoapods/p/ReaderKit.svg)
 ![Total downloads](https://img.shields.io/github/downloads/Wobook/wobook-reader-ios/total.svg)
 
 ### CocoaPods
 
-To install WobookReader using [CocoaPods](http://cocoapods.org), add the following line to your Podfile:
+To install ReaderKit using [CocoaPods](http://cocoapods.org), add the following line to your Podfile:
 
 ```ruby
-pod 'WobookReader'
+pod 'ReaderKit'
 ```
 
-## Usage
-
-```swift
-import WobookReader
-```
-
-
-### ATS
+#### ATS
 
 App Transport Security (ATS) is a technology that requires an app to either support best practice HTTPS security or statically declare its security limitations via a property in its `Info.plist`. ATS is officially documented in the *NSAppTransportSecurity* section of the [Information Property List Key Reference](https://developer.apple.com/library/content/documentation/General/Reference/InfoPlistKeyReference/Articles/CocoaKeys.html#//apple_ref/doc/uid/TP40009251-SW33).
 
@@ -79,25 +73,31 @@ You must add **wobook.com** as an exception to allow the HTTP calls of the reade
   </dict>
 ```
 
+## Usage
+
+```swift
+import ReaderKit
+```
+
 ### Initialializing the reader
 
 ```swift
-let wobookReader = WobookReader(withURL: "https://httpbin.org/get",
+let reader = RKReader(withURL: "https://httpbin.org/get",
                                 withAPIKey: "XXX-XXX-XXX")
 ```
 
 If you are connected and own the issue, you can add your readerKey:
 
 ```swift
-let wobookReader = WobookReader(withURL: "https://httpbin.org/get",
+let reader = RKReader(withURL: "https://httpbin.org/get",
                                 withAPIKey: "XXX-XXX-XXX",
                                 withReaderKey: "XXXXXXXX")
 ```
 
-WobookReader can also open an issue from a local path:
+RKReader can also open an issue from a local path:
 
 ```swift
-let wobookReader = WobookReader(withPath: "Folder/Issue/")
+let reader = RKReader(withPath: "Folder/Issue/")
 ```
 
   > The parameters `apiKey` and `readerKey` are irrelevant when offline.
@@ -107,10 +107,10 @@ let wobookReader = WobookReader(withPath: "Folder/Issue/")
 Present the reader from the `UIViewController` of your choice:
 
 ```swift
-wobookReader.present(from: self)
+reader.present(from: self)
 ```
 
-> Wobook Reader will always present itself from the main thread.
+  > The RKReader will always present itself from the main thread.
 
 ### Dismissal completion block
 
@@ -122,12 +122,12 @@ var onDismiss: (() -> Void)?
 
 *Example:*
 ```swift
-wobookReader.onDismiss = {
+reader.onDismiss = {
   print("The reader has been dismissed")
 }
 ```
 
-### Customization
+## Customize
 
 Main color for progress indicator if no `progressColors` are specified:
 
@@ -137,7 +137,7 @@ var mainColor: UIColor?
 
 *Example:*
 ```swift
-wobookReader.mainColor = UIColor.blue
+reader.mainColor = UIColor.blue
 ```
 
 Colors used to create a gradient for progress indicator:
@@ -148,12 +148,13 @@ var progressColors: [CGColor]?
 
 *Example:*
 ```swift
-wobookReader.progressColors = [UIColor.red.cgColor,
+reader.progressColors = [UIColor.red.cgColor,
                                UIColor.orange.cgColor,
                                UIColor.yellow.cgColor]
 ```
 
   > The main color will be used if this parameter is nil, an empty array or contains less than 2 colors.
+
 
 Placeholder used while loading thumbnails:
 
@@ -163,24 +164,24 @@ var placeholder: UIImage?
 
 *Example:*
 ```swift
-wobookReader.placeholder = UIImage(named: "Placeholder")
+reader.placeholder = UIImage(named: "Placeholder")
 ```
 
 ### Example
 
 ```swift
-let wobookReader = WobookReader(withURL: "https://httpbin.org/get",
+let reader = RKReader(withURL: "https://httpbin.org/get",
                                 withAPIKey: "XXX-XXX-XXX",
                                 withReaderKey: "XXXXXXXX")
 
-wobookReader.mainColor = UIColor.blue
-wobookReader.progressColors = [UIColor.red.cgColor,
+reader.mainColor = UIColor.blue
+reader.progressColors = [UIColor.red.cgColor,
                                UIColor.orange.cgColor,
                                UIColor.yellow.cgColor]
-wobookReader.placeholder = UIImage(named: "Placeholder")
-wobookReader.onDismiss = {
+reader.placeholder = UIImage(named: "Placeholder")
+reader.onDismiss = {
   print("The reader has been dismissed")
 }
 
-wobookReader.present(from: self)
+reader.present(from: self)
 ```
