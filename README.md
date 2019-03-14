@@ -149,8 +149,8 @@ var progressColors: [CGColor]?
 *Example:*
 ```swift
 reader.progressColors = [UIColor.red.cgColor,
-                               UIColor.orange.cgColor,
-                               UIColor.yellow.cgColor]
+                         UIColor.orange.cgColor,
+                         UIColor.yellow.cgColor]
 ```
 
   > The main color will be used if this parameter is nil, an empty array or contains less than 2 colors.
@@ -176,11 +176,11 @@ let reader = WKReader(withURL: "https://httpbin.org/get",
 
 reader.mainColor = UIColor.blue
 reader.progressColors = [UIColor.red.cgColor,
-                               UIColor.orange.cgColor,
-                               UIColor.yellow.cgColor]
+                         UIColor.orange.cgColor,
+                         UIColor.yellow.cgColor]
 reader.placeholder = UIImage(named: "Placeholder")
 reader.onDismiss = {
-  print("The reader has been dismissed")
+    print("The reader has been dismissed")
 }
 
 reader.present(from: self)
