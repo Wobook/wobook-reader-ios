@@ -25,7 +25,7 @@
 ## Installation
 
 ![CocoaPods version](https://img.shields.io/cocoapods/v/WobookReader.svg?style=for-the-badge&logo=xcode&color=1472e1&logoColor=ffffff)
-![CocoaPods platforms](https://img.shields.io/cocoapods/p/WobookReader.svg?style=for-the-badge&logo=apple&logoColor=ffffff)
+![CocoaPods platforms](https://img.shields.io/cocoapods/p/WobookReader.svg?style=for-the-badge&logo=apple&color=178ae7&logoColor=ffffff)
 ![Latest release date](https://img.shields.io/github/release-date/Wobook/wobook-reader-ios.svg?style=for-the-badge)
 ![Total downloads](https://img.shields.io/github/downloads/Wobook/wobook-reader-ios/total.svg?style=for-the-badge&logo=google-analytics&logoColor=ffffff)
 
