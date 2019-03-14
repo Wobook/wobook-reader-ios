@@ -1,6 +1,6 @@
-<h1 align="center"> ReaderKit for iOS </h1> <br>
+<h1 align="center"> WobookReader for iOS </h1> <br>
 <p align="center">
-    <img alt="ReaderKit for iOS" title="ReaderKit for iOS" src="/assets/logo.png" height="350">
+    <img alt="WobookReader for iOS" title="WobookReader for iOS" src="/assets/logo.png" height="350">
 </p>
 
 <p align="center">
@@ -18,23 +18,23 @@
 
 ## Requirements
 
-[![Swift 4.2+](https://img.shields.io/badge/Swift-4.2%2B-orange.svg)](https://swift.org)
-[![Xcode 9.3+](https://img.shields.io/badge/Xcode-9.3%2B-lightgrey.svg)](https://developer.apple.com/xcode/)
-[![iOS 11.0+](https://img.shields.io/badge/iOS-11.0%2B-blue.svg)](https://developer.apple.com/ios/)
+[![Swift 4.2+](https://img.shields.io/badge/Swift-4.2%2B-orange.svg?style=for-the-badge&logo=swift&color=fa7343&logoColor=fa7343)](https://swift.org)
+[![Xcode 9.3+](https://img.shields.io/badge/Xcode-9.3%2B-blue.svg?style=for-the-badge&logo=xcode&color=1472e1&logoColor=ffffff)](https://developer.apple.com/xcode/)
+[![iOS 11.0+](https://img.shields.io/badge/iOS-11.0%2B-blue.svg?style=for-the-badge&logo=apple&color=178ae7&logoColor=ffffff)](https://developer.apple.com/ios/)
 
 ## Installation
 
-![CocoaPods version](https://img.shields.io/cocoapods/v/ReaderKit.svg)
-![Latest release date](https://img.shields.io/github/release-date/Wobook/wobook-reader-ios.svg)
-![CocoaPods platforms](https://img.shields.io/cocoapods/p/ReaderKit.svg)
-![Total downloads](https://img.shields.io/github/downloads/Wobook/wobook-reader-ios/total.svg)
+![CocoaPods version](https://img.shields.io/cocoapods/v/WobookReader.svg?style=for-the-badge&logo=xcode&color=1472e1&logoColor=ffffff)
+![CocoaPods platforms](https://img.shields.io/cocoapods/p/WobookReader.svg?style=for-the-badge&logo=apple&logoColor=ffffff)
+![Latest release date](https://img.shields.io/github/release-date/Wobook/wobook-reader-ios.svg?style=for-the-badge)
+![Total downloads](https://img.shields.io/github/downloads/Wobook/wobook-reader-ios/total.svg?style=for-the-badge&logo=google-analytics&logoColor=ffffff)
 
 ### CocoaPods
 
-To install ReaderKit using [CocoaPods](http://cocoapods.org), add the following line to your Podfile:
+To install WobookReader using [CocoaPods](http://cocoapods.org), add the following line to your Podfile:
 
 ```ruby
-pod 'ReaderKit'
+pod 'WobookReader'
 ```
 
 #### ATS
@@ -76,28 +76,28 @@ You must add **wobook.com** as an exception to allow the HTTP calls of the reade
 ## Usage
 
 ```swift
-import ReaderKit
+import WobookReader
 ```
 
 ### Initialializing the reader
 
 ```swift
-let reader = RKReader(withURL: "https://httpbin.org/get",
+let reader = WKReader(withURL: "https://httpbin.org/get",
                                 withAPIKey: "XXX-XXX-XXX")
 ```
 
 If you are connected and own the issue, you can add your readerKey:
 
 ```swift
-let reader = RKReader(withURL: "https://httpbin.org/get",
+let reader = WKReader(withURL: "https://httpbin.org/get",
                                 withAPIKey: "XXX-XXX-XXX",
                                 withReaderKey: "XXXXXXXX")
 ```
 
-RKReader can also open an issue from a local path:
+WKReader can also open an issue from a local path:
 
 ```swift
-let reader = RKReader(withPath: "Folder/Issue/")
+let reader = WKReader(withPath: "Folder/Issue/")
 ```
 
   > The parameters `apiKey` and `readerKey` are irrelevant when offline.
@@ -110,7 +110,7 @@ Present the reader from the `UIViewController` of your choice:
 reader.present(from: self)
 ```
 
-  > The RKReader will always present itself from the main thread.
+  > The WKReader will always present itself from the main thread.
 
 ### Dismissal completion block
 
@@ -170,7 +170,7 @@ reader.placeholder = UIImage(named: "Placeholder")
 ### Example
 
 ```swift
-let reader = RKReader(withURL: "https://httpbin.org/get",
+let reader = WKReader(withURL: "https://httpbin.org/get",
                                 withAPIKey: "XXX-XXX-XXX",
                                 withReaderKey: "XXXXXXXX")
 
