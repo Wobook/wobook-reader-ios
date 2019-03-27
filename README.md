@@ -18,8 +18,8 @@
 
 ## Requirements
 
-[![Swift 4.2+](https://img.shields.io/badge/Swift-4.2%2B-orange.svg?style=for-the-badge&logo=swift&color=fa7343&logoColor=fa7343)](https://swift.org)
-[![Xcode 9.3+](https://img.shields.io/badge/Xcode-9.3%2B-blue.svg?style=for-the-badge&logo=xcode&color=1472e1&logoColor=ffffff)](https://developer.apple.com/xcode/)
+[![Swift 5.0+](https://img.shields.io/badge/Swift-5.0%2B-orange.svg?style=for-the-badge&logo=swift&color=fa7343&logoColor=fa7343)](https://swift.org)
+[![Xcode 10.0+](https://img.shields.io/badge/Xcode-10.0%2B-blue.svg?style=for-the-badge&logo=xcode&color=1472e1&logoColor=ffffff)](https://developer.apple.com/xcode/)
 [![iOS 11.0+](https://img.shields.io/badge/iOS-11.0%2B-blue.svg?style=for-the-badge&logo=apple&color=178ae7&logoColor=ffffff)](https://developer.apple.com/ios/)
 
 ## Installation
