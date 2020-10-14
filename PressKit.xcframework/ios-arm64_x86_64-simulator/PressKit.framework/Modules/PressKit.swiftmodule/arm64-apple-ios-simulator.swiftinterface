@@ -1,0 +1,209 @@
+// swift-interface-format-version: 1.0
+// swift-compiler-version: Apple Swift version 5.3 (swiftlang-1200.0.29.2 clang-1200.0.30.1)
+// swift-module-flags: -target arm64-apple-ios12.0-simulator -enable-objc-interop -enable-library-evolution -swift-version 5 -enforce-exclusivity=checked -O -module-name PressKit
+import AVKit
+import Foundation
+import PDFKit
+import Swift
+import SystemConfiguration
+import UIKit
+import WebKit
+@frozen public struct PKPage : Swift.Codable {
+  public let page: Swift.Int
+  public let articles: [PressKit.PKArticle]
+  public init(from decoder: Swift.Decoder) throws
+  public func encode(to encoder: Swift.Encoder) throws
+}
+@frozen public struct PKArticle : Swift.Codable {
+  public let title: Swift.String
+  public let article: Swift.String
+  public let thumbnail: Swift.String
+  public let page: Swift.Int
+  public let words: Swift.Int
+  public init(from decoder: Swift.Decoder) throws
+  public func encode(to encoder: Swift.Encoder) throws
+}
+public typealias Timestamp = Swift.Double
+@frozen public struct PKIssue : Swift.Codable {
+  public let type: PressKit.LibraryTypes
+  public let id: Swift.String
+  public let key: Swift.String
+  public let name: Swift.String
+  public let number: Swift.String
+  public let date: PressKit.Timestamp
+  public let sku: Swift.String
+  public let summary: Swift.String
+  public let desc: Swift.String
+  public let new: Swift.Bool
+  public let unitOfferID: Swift.Int
+  public let unitPrice: Swift.Int
+  public let subOfferID: Swift.Int
+  public let subPrice: Swift.Int
+  public let price: Swift.Int
+  public let newsstandPrice: Swift.Int
+  public let periodicity: Swift.String
+  public let subcategory: Swift.String
+  public let issuesPerYear: Swift.Int
+  internal let sample: Swift.Bool
+  internal var pdf: Swift.String
+  internal var articles: Swift.String
+  internal let toc: [PressKit.PKPage]
+  public init(from decoder: Swift.Decoder) throws
+  public func encode(to encoder: Swift.Encoder) throws
+}
+@frozen public enum CoverSizes : Swift.String {
+  case tiny
+  case small
+  case medium
+  case large
+  public typealias RawValue = Swift.String
+  public init?(rawValue: Swift.String)
+  public var rawValue: Swift.String {
+    get
+  }
+}
+public protocol PKDelegate : AnyObject {
+  func downloadProgressUpdated(for progress: Swift.Float)
+  func downloadCompleted(at location: Foundation.URL)
+  func downloadCompletedWithError(_ error: PressKit.PKError)
+}
+extension NSNotification.Name {
+  public static let goToPage: Foundation.Notification.Name
+  public static let increaseFont: Foundation.Notification.Name
+  public static let decreaseFont: Foundation.Notification.Name
+  public static let startTTS: Foundation.Notification.Name
+  public static let pauseTTS: Foundation.Notification.Name
+  public static let stopTTS: Foundation.Notification.Name
+  public static let endTTS: Foundation.Notification.Name
+}
+extension UIImageView {
+  public func cover(forIssue key: Swift.String, size: PressKit.CoverSizes = .medium, withPlaceholder placeholder: UIKit.UIImage? = nil)
+}
+@frozen public enum PKError : Swift.Error {
+  case notActivated
+  case internalError
+  case invalidOrigin
+  case apiError
+  case emailAlreadyExists
+  case tokenInvalid
+  case tokenExpired
+  case tokenRequired
+  case preconditionFailed
+  case preconditionPasswordFailed
+  case preconditionUserFailed
+  case preconditionCodeFailed
+  case passwordInvalid
+  case codeInvalid
+  case codeExpired
+  case userNotFound
+  case issueNotFound
+  case issueInvalid
+  case alreadyDiscovered
+  case canBuy
+  case alreadyShared
+  case receiverNotFound
+  case receiptMissing
+  case alreadyOwned
+  case preconditionOfferFailed
+  case invalidPayment
+  case appleError
+  case fetchingFailed
+  case processingFailed
+  case downloadingError
+  public static func == (a: PressKit.PKError, b: PressKit.PKError) -> Swift.Bool
+  public var hashValue: Swift.Int {
+    get
+  }
+  public func hash(into hasher: inout Swift.Hasher)
+}
+extension PKError : Foundation.LocalizedError {
+  public var code: Swift.Int {
+    get
+  }
+  public var localizedDescription: Swift.String {
+    get
+  }
+}
+@frozen public enum LibraryTypes : Swift.String, Swift.Codable {
+  case discover
+  case catalog
+  case purchases
+  case discoveries
+  case downloaded
+  case owned
+  public typealias RawValue = Swift.String
+  public var rawValue: Swift.String {
+    get
+  }
+  public init?(rawValue: Swift.String)
+}
+@frozen public struct PKUser : Swift.Codable {
+  public var token: Swift.String
+  public let email: Swift.String
+  public let firstName: Swift.String
+  public let lastName: Swift.String
+  public let key: Swift.String
+  public let organization: Swift.String
+  public let login: Swift.String
+  public init(from decoder: Swift.Decoder) throws
+  public func encode(to encoder: Swift.Encoder) throws
+}
+@frozen public struct PKCategory : Swift.Codable {
+  public let id: Swift.String
+  public let name: Swift.String
+  public init(id: Swift.String, name: Swift.String)
+  public init(from decoder: Swift.Decoder) throws
+  public func encode(to encoder: Swift.Encoder) throws
+}
+@_hasMissingDesignatedInitializers public class Press {
+  public static let api: PressKit.Press
+  @objc deinit
+  public func set(user: Swift.String = "")
+  public func activate(fromOrigin origin: Swift.String = "", withKey key: Swift.String = "")
+  public var isConnectedToInternet: Swift.Bool {
+    get
+  }
+  public func signUp(withEmail email: Swift.String, firstName: Swift.String, lastName: Swift.String, usingPassword password: Swift.String, completionHandler: @escaping (Swift.Result<PressKit.PKUser, PressKit.PKError>) -> Swift.Void)
+  public func signIn(withEmail email: Swift.String, usingPassword password: Swift.String, completionHandler: @escaping (Swift.Result<PressKit.PKUser, PressKit.PKError>) -> Swift.Void)
+  public func signOut(user: Swift.String, withToken token: Swift.String, completionHandler: @escaping (Swift.Result<Swift.Bool, PressKit.PKError>) -> Swift.Void)
+  public func resetPassword(forEmail email: Swift.String)
+  public func renewToken(ofUser user: Swift.String, completionHandler: @escaping (Swift.Result<Swift.String, PressKit.PKError>) -> Swift.Void)
+  public func signUp(withTransactionID transaction: Swift.String, completionHandler: @escaping (Swift.Result<PressKit.PKUser, PressKit.PKError>) -> Swift.Void)
+  public func signIn(withTransactionID transaction: Swift.String, completionHandler: @escaping (Swift.Result<PressKit.PKUser, PressKit.PKError>) -> Swift.Void)
+  public func signUp(withCode code: Swift.String, forOrganization organization: Swift.String, withEmail email: Swift.String, completionHandler: @escaping (Swift.Result<PressKit.PKUser, PressKit.PKError>) -> Swift.Void)
+  public func signIn(withCode code: Swift.String, forOrganization organization: Swift.String, withEmail email: Swift.String, completionHandler: @escaping (Swift.Result<PressKit.PKUser, PressKit.PKError>) -> Swift.Void)
+  public func check(code: Swift.String, forOrganization organization: Swift.String, completionHandler: @escaping (Swift.Result<Swift.Bool, PressKit.PKError>) -> Swift.Void)
+  public func account(completionHandler: @escaping (Swift.Result<PressKit.PKUser, PressKit.PKError>) -> Swift.Void)
+  public func account(updatedEmail email: Swift.String = "", updatedPassword password: Swift.String = "", updatedFirstName firstName: Swift.String = "", updatedLastName lastName: Swift.String = "", completionHandler: @escaping (Swift.Result<PressKit.PKUser, PressKit.PKError>) -> Swift.Void)
+  public func account(addEmail email: Swift.String, addPassword password: Swift.String, addFirstName firstName: Swift.String, addLastName lastName: Swift.String, completionHandler: @escaping (Swift.Result<PressKit.PKUser, PressKit.PKError>) -> Swift.Void)
+  public func discover(page: Swift.Int = 0, completionHandler: @escaping (Swift.Result<[PressKit.PKIssue], PressKit.PKError>) -> Swift.Void)
+  public func selection(completionHandler: @escaping (Swift.Result<[PressKit.PKIssue], PressKit.PKError>) -> Swift.Void)
+  public func catalogCategories(completionHandler: @escaping (Swift.Result<[PressKit.PKCategory], PressKit.PKError>) -> Swift.Void)
+  public func catalogSubcategories(ofCategory category: Swift.String, completionHandler: @escaping (Swift.Result<[PressKit.PKCategory], PressKit.PKError>) -> Swift.Void)
+  public func category(_ category: Swift.String, page: Swift.Int = 0, completionHandler: @escaping (Swift.Result<[PressKit.PKIssue], PressKit.PKError>) -> Swift.Void)
+  public func subcategory(_ subcategory: Swift.String, page: Swift.Int = 0, completionHandler: @escaping (Swift.Result<[PressKit.PKIssue], PressKit.PKError>) -> Swift.Void)
+  public func libraryCategories(completionHandler: @escaping (Swift.Result<[PressKit.PKCategory], PressKit.PKError>) -> Swift.Void)
+  public func downloads(completionHandler: @escaping (Swift.Result<Swift.String, PressKit.PKError>) -> Swift.Void)
+  public func isDownloaded(key: Swift.String, completionHandler: @escaping (Swift.Result<Swift.Bool, PressKit.PKError>) -> Swift.Void)
+  public func search(_ query: Swift.String, page: Swift.Int = 0, offline: Swift.Bool = false, completionHandler: @escaping (Swift.Result<[PressKit.LibraryTypes.RawValue : [PressKit.PKIssue]], PressKit.PKError>) -> Swift.Void)
+  public func searchADL(_ query: Swift.String, page: Swift.Int = 0, offline: Swift.Bool = false, completionHandler: @escaping (Swift.Result<[PressKit.PKIssue], PressKit.PKError>) -> Swift.Void)
+  public func details(ofIssue key: Swift.String, from library: PressKit.LibraryTypes = .discover, completionHandler: @escaping (Swift.Result<PressKit.PKIssue, PressKit.PKError>) -> Swift.Void)
+  public func detailsADL(ofIssue key: Swift.String, completionHandler: @escaping (Swift.Result<PressKit.PKIssue, PressKit.PKError>) -> Swift.Void)
+  public func archives(ofIssue key: Swift.String, page: Swift.Int = 0, completionHandler: @escaping (Swift.Result<[PressKit.PKIssue], PressKit.PKError>) -> Swift.Void)
+  public func add(issue key: Swift.String, completionHandler: @escaping (Swift.Result<Swift.Bool, PressKit.PKError>) -> Swift.Void)
+  public func share(issue key: Swift.String, to name: Swift.String, at email: Swift.String, completionHandler: @escaping (Swift.Result<Swift.Bool, PressKit.PKError>) -> Swift.Void)
+  public func purchase(issue key: Swift.String, forOffer offer: Swift.Int, withProofOfPayment receipt: Swift.String, completionHandler: @escaping (Swift.Result<Swift.Bool, PressKit.PKError>) -> Swift.Void)
+  public func subscribe(toIssue key: Swift.String, forOffer offer: Swift.Int, withProofOfPayment receipt: Swift.String, completionHandler: @escaping (Swift.Result<Swift.Bool, PressKit.PKError>) -> Swift.Void)
+  public func read(_ key: Swift.String, unlocked: Swift.Bool = false, from parentController: UIKit.UIViewController)
+  public func download(issue key: Swift.String, downloadProgress: PressKit.PKDelegate? = nil, completionHandler: @escaping (Swift.Result<Swift.Bool, PressKit.PKError>) -> Swift.Void)
+  public func delete(_ key: Swift.String = "", all: Swift.Bool = false)
+  public func analytics(_ analytics: [Swift.String : [Any]])
+}
+extension PressKit.CoverSizes : Swift.Equatable {}
+extension PressKit.CoverSizes : Swift.Hashable {}
+extension PressKit.CoverSizes : Swift.RawRepresentable {}
+extension PressKit.PKError : Swift.Equatable {}
+extension PressKit.PKError : Swift.Hashable {}
+extension PressKit.LibraryTypes : Swift.Equatable {}
+extension PressKit.LibraryTypes : Swift.Hashable {}
+extension PressKit.LibraryTypes : Swift.RawRepresentable {}
