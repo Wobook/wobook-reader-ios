@@ -1,4 +1,0 @@
-framework module PressKit {
-  header "PressKit-Swift.h"
-  requires objc
-}
