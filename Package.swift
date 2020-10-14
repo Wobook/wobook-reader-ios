@@ -12,7 +12,8 @@ let package = Package(
     ],
     targets: [
         .binaryTarget(
-        	name: "PressKit",
-        	path: "PressKit.xcframework")
+            name: "PressKit",
+            url: "https://github.com/Wobook/wobook-reader-ios/releases/download/v3/PressKit.xcframework.zip",
+        )
     ]
 )
